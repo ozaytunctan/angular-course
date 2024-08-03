@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {Observable, of} from "rxjs";
 
 
 @Injectable({providedIn: 'root'})
@@ -17,12 +18,19 @@ export class AuthService {
     return hasRole(roles);
   }
 
+  register(registerValue: any): Observable<any> {
+    return of();
+
+  }
 }
 
 export function hasRole(roles: string[] | any[]) {
   if (roles == null || roles.length == 0) {
     return false;
   }
+
+  const defaultUserRoles = ['ADMIN_ROLE', 'CREATE_ROLE', 'USER_ROLE', 'READ_ROLE'];
+  return defaultUserRoles.some(role => roles.includes(role));
 
   // role kontolü yap sonra yetkilendir.
   // const http = inject(HttpClient);

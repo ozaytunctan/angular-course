@@ -3,6 +3,7 @@ import {provideRouter, withRouterConfig} from '@angular/router';
 
 import {routes} from './app.routes';
 import {provideHttpClient, withFetch} from "@angular/common/http";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +13,6 @@ export const appConfig: ApplicationConfig = {
       withRouterConfig({paramsInheritanceStrategy: 'always'}),
       // withPreloading(PreloadAllModules)
     ),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()), provideAnimationsAsync()
   ]
 };
