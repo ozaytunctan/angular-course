@@ -18,8 +18,8 @@ export type DialogData = {
       {{ data.text }}
     </div>
     <div mat-dialog-actions>
-      <button [mat-dialog-close]="false" mat-button>Cancel</button>
-      <button [mat-dialog-close]="true" mat-button>Ok</button>
+      <button [mat-dialog-close]="false" mat-button>İptal</button>
+      <button [mat-dialog-close]="true" mat-button>Tamam</button>
     </div>
   `
 })
