@@ -8,6 +8,7 @@ import {
   OnInit, SimpleChanges
 } from '@angular/core';
 import {FormsModule} from "@angular/forms";
+import {Confirmable} from "../../decorator/confirmable";
 
 @Component({
   selector: 'app-component-life-cycle',
@@ -37,6 +38,7 @@ export class ComponentLifeCycleComponent
     console.log("Step-1 -> constructor method run()")
   }
 
+
   ngOnChanges(changes: SimpleChanges): void {
     const simpleChange = changes['data'];
     console.log("Step-2 -> ngOnChanges() method run()" + simpleChange.currentValue);
@@ -45,6 +47,7 @@ export class ComponentLifeCycleComponent
   ngOnInit(): void {
     console.log("Step-3 ->ngOnInit() method run()");
   }
+
 
 
   ngDoCheck(): void {

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MatButtonModule} from "@angular/material/button";
 import {Confirmable} from "../../decorator/confirmable";
 import {PreAuthorize} from "../../decorator/pre-authorize";
+import {Loggable} from "../../decorator/loggable";
 
 @Component({
   selector: 'app-decorator-example',
@@ -21,6 +22,7 @@ export class DecoratorExampleComponent {
   // @PreAuthorize()
   @PreAuthorize("ADMIN_ROLE", "CREATE_ROLE")
   @Confirmable()
+  @Loggable()
   onSave() {
     this.confirmed = true;
     alert("Confirmed :" + this.confirmed);
