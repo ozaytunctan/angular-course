@@ -4,6 +4,7 @@ import {DirectiveExampleComponent} from "./components/directive-example/directiv
 import {PipesExampleComponent} from "./components/pipes-example/pipes-example.component";
 import {MatButtonModule} from "@angular/material/button";
 import {DecoratorExampleComponent} from "./components/decorator-example/decorator-example.component";
+import {ComponentLifeCycleComponent} from "./components/component-life-cycle/component-life-cycle.component";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import {DecoratorExampleComponent} from "./components/decorator-example/decorato
     DirectiveExampleComponent,
     MatButtonModule,
     PipesExampleComponent,
-    DecoratorExampleComponent
+    DecoratorExampleComponent,
+    ComponentLifeCycleComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
