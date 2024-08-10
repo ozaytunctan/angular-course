@@ -1,59 +1,71 @@
 <div class="directive-components">
-  <button (click)="onToggleVisible()">{{isShow ? 'Hide' : 'Show'}}</button>
+  <div>
+    <h2>Custom NgIf Directive</h2>
+    <button (click)="onToggleVisible()">{{isShow ? 'Hide' : 'Show'}}</button>
+    <br>
+    <!-- Step1-->
+    <ng-template [ngShow]="isShow"
+                 [ngShowElse]="elseTemplate"
+                 [ngShowThen]="thenTemplate">
+    </ng-template>
 
-  <div *ngShow="isShow; then thenTemplate;else elseTemplate" ></div>
-  <ng-template #thenTemplate>
-    *ngShowThen directive status:{{isShow}}
-  </ng-template>
-  <ng-template #elseTemplate>
-    *ngShowElse directive status:{{isShow}}
-  </ng-template>
-</div>
+    <br>
+    <!-- Step2 -->
+    <div *ngShow="isShow; then thenTemplate;else elseTemplate"></div>
+    <ng-template #thenTemplate>
+      *ngShowThen directive status:{{isShow}}
+    </ng-template>
+    <ng-template #elseTemplate>
+      *ngShowElse directive status:{{isShow}}
+    </ng-template>
+  </div>
 
+  <h2>Custom NgFor Directive</h2>
+  <div>
+    <ul>
+      <li *ngRepeat="names ; let name;let ind=index;let first=first;let last=last">
+        {{name}}-{{ind}}
+        <span *ngShow="first">First</span>
+        <span *ngShow="last">Last</span>
+      </li>
+    </ul>
+  </div>
 
-<h2>Custom NgFor Directive</h2>
-<div>
-  <ul>
-    <li *ngRepeat="names ; let name;let ind=index;let first=first;let last=last">
-      {{name}}-{{ind}}
-      <span *ngShow="first">First</span>
-      <span *ngShow="last">Last</span>
-    </li>
-  </ul>
-</div>
-
-<!--    Auth Directive-->
-<h2>Has Role Directive</h2>
-<div>
-  <div *hasRole="['USER_ROLE','MODULE_ACCESS_ROLE']; let authorized">
-    Authorized Status:
-    <span>{{authorized|json}}</span>
-    <div>
-      <button *hasAuthority="['SAVE_BUTTON','DELETE_BUTTON']">Save</button>
+  <!--    Auth Directive-->
+  <h2>Has Role Directive</h2>
+  <div>
+    <div *hasRole="['USER_ROLE','MODULE_ACCESS_ROLE']; let authorized">
+      Authorized Status:
+      <span>{{authorized|json}}</span>
+      <div>
+        <button *hasAuthority="['SAVE_BUTTON','DELETE_BUTTON']">Save</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!--    HighLight Custom Default -->
-<h2>Custom Normal Directive</h2>
-<div>
+  <!--    HighLight Custom Default -->
+  <h2>Custom Normal Directive</h2>
+  <div>
 
-  Static example:
-  <p highLight
-     [searchedWords]="['song', 'name', 'p']"
-     text="song name person"
-     classToApply="selected"></p>
+    Static example:
+    <p highLight
+       [searchedWords]="['song', 'name', 'p']"
+       text="song name person"
+       classToApply="selected"></p>
 
-  <!--      Text: <br>-->
-  <!--      <input type="text" placeholder="Text" [formControl]="text">-->
-  <!--      Searched words: <br>-->
-  <!--      <input type="text" placeholder="Searched words" [formControl]="searchedWordsControl">-->
+    <!--      Text: <br>-->
+    <!--      <input type="text" placeholder="Text" [formControl]="text">-->
+    <!--      Searched words: <br>-->
+    <!--      <input type="text" placeholder="Searched words" [formControl]="searchedWordsControl">-->
 
-  <!--      <p-->
-  <!--        highLight-->
-  <!--        [searchedWords]="searchedWords$ | async"-->
-  <!--        [text]="text.value"-->
-  <!--        classToApply="selected"-->
-  <!--      ></p>-->
+    <!--      <p-->
+    <!--        highLight-->
+    <!--        [searchedWords]="searchedWords$ | async"-->
+    <!--        [text]="text.value"-->
+    <!--        classToApply="selected"-->
+    <!--      ></p>-->
+
+  </div>
+
 
 </div>
