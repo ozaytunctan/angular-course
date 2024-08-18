@@ -1,0 +1,17 @@
+
+.actions {
+  margin-left: 20px;
+}
+
+.action {
+  color: white !important;
+}
+
+.action.active {
+  border-bottom: 1px solid white;
+}
+
+mat-toolbar {
+  background-color: #673ab7;
+  color: white
+}

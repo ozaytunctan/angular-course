@@ -1,0 +1,106 @@
+<div class="page">
+  <div>
+    <h3>if</h3>
+    <button mat-raised-button
+            color="primary"
+            *ngIf="isAdmin">Delete database</button>
+    @if (isAdmin) {
+      <button mat-button>Delete database</button>
+    }
+  </div>
+
+  <div>
+    <h3>as - variable</h3>
+    <button mat-button *ngIf="isAdmin$ | async as isAdmin">Delete database</button>
+    @if (isAdmin$ | async; as isAdmin) {
+      <button mat-button>Delete database</button>
+    }
+  </div>
+
+  <div>
+    <h3>if - else if</h3>
+    @if (userType === 'admin') {
+      <p>You are an admin</p>
+    } @else if (userType === 'staff') {
+      <p>You are a staff</p>
+    } @else if (userType === 'moderator') {
+      <p>You are a moderator</p>
+    }
+  </div>
+
+  <div>
+    <h3>if - else</h3>
+    <button mat-button *ngIf="isAdmin; else noPermission">Delete database</button>
+    @if (isAdmin) {
+      <button mat-button>Delete database</button>
+    } @else {
+      <p>You don't have permission.</p>
+    }
+  </div>
+
+  <div>
+    <h3>for loop</h3>
+    <ul>
+      <li *ngFor="let fruit of fruits; trackBy: fruitsTrackBy">
+        {{ fruit }}
+      </li>
+    </ul>
+
+    <ul>
+      @for (fruit of fruits; track fruit) {
+        <li>{{ fruit }}</li>
+      }
+    </ul>
+  </div>
+
+  <div>
+    <h3>for loop scope variables</h3>
+    <ul>
+      @for (fruit of fruits; track fruit; let idx = $index, e = $even) {
+        <li>Size: {{ $count }}</li>
+        <li>Index: {{ idx }}</li>
+        <li>First: {{ $first }}</li>
+        <li>Last: {{ $last }}</li>
+        <li>Even: {{ e }}</li>
+        <li>Odd: {{ $odd }}</li>
+      }
+    </ul>
+  </div>
+
+  <div>
+    <h3>for loop empty</h3>
+    <ul>
+      @for (fruit of fruits; track fruit) {
+        <li>{{ fruit }}</li>
+      } @empty {
+        <li>no fruits left..</li>
+      }
+    </ul>
+  </div>
+
+  <div>
+    <h3>switch</h3>
+    <ul>
+      @switch (userType) {
+        @case ('admin') {
+          <span>You are an admin</span>
+        }
+        @case ('staff') {
+          <span>You are a staff</span>
+        }
+        @case ('moderator') {
+          <span>You are a moderator</span>
+        }
+        @default {
+          <span>Who you are?</span>
+        }
+      }
+    </ul>
+  </div>
+
+  <p>migrate your projects by running: ng generate {{ '@' }}angular/core:control-flow</p>
+</div>
+
+<ng-template #noPermission>
+  <p>You don't have permission.</p>
+</ng-template>
