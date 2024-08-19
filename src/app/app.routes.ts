@@ -23,13 +23,25 @@ export const routes: Routes = [
         path: 'book',
         canActivateChild: [canChildGuard],
         loadChildren: () => import('./pages/book/books.routes'),
-        title: 'Books View Transition'
+        title: 'Books View Transition',
+        data: {
+          preloadData: {
+            preload: true,
+            delay: 5_000
+          }
+        }
       },
       {
         path: 'admin',
         canActivate: [authGuard],
         canMatch: [canMatchGuard],
         loadChildren: () => import('./pages/admin/admin.routes'),
+        data: {
+          preloadData: {
+            preload: true,
+            delay: 10_000
+          }
+        },
         title: 'Admin'
       }
     ]

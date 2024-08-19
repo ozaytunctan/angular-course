@@ -11,6 +11,6 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
   imports: [AsyncPipe, NgFor, MatButtonModule, RouterLink],
 })
 export default class BooksComponent {
-  readonly books = inject(BooksService).getBooks();
+  readonly books$ = inject(BooksService).getBooks();
   readonly activeRoute = inject(ActivatedRoute);
 }

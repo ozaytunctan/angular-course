@@ -14,25 +14,25 @@ export const MOCK: Book[] = [
   {
     id: 'clean-code',
     title: 'Clean Code: A handbook of Agile Software Craftsmanship',
-    img: '/assets/images/clean-code.png',
+    img: '/images/clean-code.png',
     author: 'Robert C. Martin',
   },
   {
     id: 'introducing-git',
     title: 'Introducing Github: A Non-Technical Guide',
-    img: '/assets/images/introducing-github.png',
+    img: '/images/introducing-github.png',
     author: 'Miguel Angel Durán',
   },
   {
     id: 'the-clean-coder',
     title: 'The Clean Coder: A Code of Conduct for Professional Programmers',
-    img: '/assets/images/the-clean-coder.png',
+    img: '/images/the-clean-coder.png',
     author: 'Robert C. Martin',
   },
   {
     id: 'javascript-the-good-parts',
     title: 'JavaScript: The Good Parts',
-    img: '/assets/images/javascript-the-good-parts.png',
+    img: '/images/javascript-the-good-parts.png',
     author: 'Douglas Crockford',
   },
 ].map((b) => {

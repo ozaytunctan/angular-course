@@ -9,7 +9,6 @@ import {
 
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-  debugger;
 
   return true;
 }

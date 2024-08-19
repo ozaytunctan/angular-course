@@ -1,7 +1,7 @@
 <div class="page">
   <h1>Books</h1>
   <div class="books-container">
-    @for (book of books(); track book.id; let isFirst = $first) {
+    @for (book of books$(); track book.id) {
       <a class="book"
          [routerLink]="book.id"
          [relativeTo]="activeRoute"
