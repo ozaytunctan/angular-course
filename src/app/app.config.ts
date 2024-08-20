@@ -6,9 +6,11 @@ import {provideHttpClient, withFetch} from "@angular/common/http";
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {provideCompanyTitleStrategy} from "./services/title-strategy";
 import {CustomPreloadingStrategy} from "./services/custom-preload.strategy";
+import {LOGGER_FACTORY} from "./services/logger.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    LOGGER_FACTORY,
     provideZoneChangeDetection({eventCoalescing: true}),
     provideRouter(routes,
       withPreloading(CustomPreloadingStrategy),
