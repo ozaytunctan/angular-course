@@ -30,7 +30,6 @@ export class AppComponent {
 
   constructor(injector: Injector) {
     AppComponent.INJECTOR = injector;
-    debugger;
     this.logger.log("Test log message..");
   }
 

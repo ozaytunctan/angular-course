@@ -1,5 +1,4 @@
 import {Routes} from '@angular/router';
-import {HomeComponent} from "./pages/home/home.component";
 import {authGuard, canChildGuard, canMatchGuard, noAuthGuard} from "./quards/quards";
 import {LayoutComponent} from "./layouts/layout.component";
 
@@ -10,7 +9,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/dashboard',
         pathMatch: 'full',
       },
       {
@@ -18,6 +17,13 @@ export const routes: Routes = [
         canActivate: [noAuthGuard],
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
       },
+
+      {
+        path: 'dashboard',
+        loadComponent: () => import('./pages/dashboard/dashboard.component')
+          .then(m => m.DashboardComponent),
+      },
+
       // Lazy Loading com
       {
         path: 'book',
@@ -44,5 +50,7 @@ export const routes: Routes = [
         },
         title: 'Admin'
       }
+
     ]
-  }];
+  }
+];
