@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 
 @Component({
-  selector: 'app-subscribers',
+  selector: 'app-revenue',
   standalone: true,
   imports: [
     MatIcon
   ],
-  template:`
-
+  template: `
     <div class="flex flex-row gap-1 mt-2">
       <p class="font-bold text-green-800">25,00</p>
       <mat-icon class="text-green-800">arrow_circle_up</mat-icon>
@@ -17,10 +16,9 @@ import {MatIcon} from "@angular/material/icon";
 
     <div class="text-dim-gray stat-subtext">
       <span class="text-green-700">+500</span> in the las 28 years
-    </div>
-  `,
-  styleUrl: './subscribers.component.scss'
+    </div>`,
+  styles: ``
 })
-export class SubscribersComponent {
+export class RevenueComponent {
 
 }

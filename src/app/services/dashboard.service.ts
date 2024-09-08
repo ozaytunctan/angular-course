@@ -1,9 +1,9 @@
 import {computed, Injectable, signal} from '@angular/core';
-import {SubscribersComponent} from "../pages/dashboard/widgets/subscribers/subscribers.component";
-import {ViewsComponent} from "../pages/dashboard/widgets/views/views.component";
+import {SubscribersComponent} from "../pages/dashboard/widgets/subscribers.component";
+import {ViewsComponent} from "../pages/dashboard/widgets/views.component";
 import {Widget} from "../models/widget";
-import {WatchTimeComponent} from "../pages/dashboard/widgets/watch-time/watch-time.component";
-import {RevenueComponent} from "../pages/dashboard/widgets/revenue/revenue.component";
+import {WatchTimeComponent} from "../pages/dashboard/widgets/watch-time.component";
+import {RevenueComponent} from "../pages/dashboard/widgets/revenue.component";
 
 @Injectable()
 export class DashboardService {
@@ -45,11 +45,10 @@ export class DashboardService {
       backgroundColor: '#003f5c',
       color: 'whitesmoke'
     }
-
   ]);
 
 
-  addedWidgets = signal<Widget[]>([...this.widgets()]);
+  addedWidgets = signal<Widget[]>([...this.widgets().slice(0,2)]);
 
   widgetsToAdd = computed(() => {
     const addedIds = this.addedWidgets().map(w => w.id);

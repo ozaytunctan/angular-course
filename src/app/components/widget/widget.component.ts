@@ -16,22 +16,22 @@ import {WidgetOptionsComponent} from "./widget-options/widget-options.component"
   ],
   template: `
     <div class="container mat-elevation-z3"
-         [style.background-color]="w().backgroundColor??'white'"
-         [style.color]="w().color??'inherit'">
+         [style.background-color]="data().backgroundColor??'white'"
+         [style.color]="data().color??'inherit'">
 
-      <h3 class="m-0">{{ w().title }}</h3>
+      <h3 class="m-0">{{ data().title }}</h3>
       <button mat-icon-button
               class="settings-button"
               (click)="showOptions.set(true)"
-              [style.--mdc-icon-button-icon-color]="w().color??'inherit'">
+              [style.--mdc-icon-button-icon-color]="data().color??'inherit'">
         <mat-icon>settings</mat-icon>
       </button>
 
-      <ng-container [ngComponentOutlet]="w().content"></ng-container>
+      <ng-container [ngComponentOutlet]="data().content"></ng-container>
 
       @if (showOptions()) {
         <app-widget-options [(showOptions)]="showOptions"
-                            [data]="w()"/>
+                            [data]="data()"/>
       }
     </div>
   `,
@@ -60,17 +60,14 @@ import {WidgetOptionsComponent} from "./widget-options/widget-options.component"
 
   `,
   host: {
-    '[style.grid-area]': '"span "+ (w().rows?? 1)+ " /span "+ (w().cols ?? 1)'
+    '[style.grid-area]': '"span "+ (data().rows?? 1)+ " /span "+ (data().cols ?? 1)'
   }
 })
 
 export class WidgetComponent {
-  w = input.required<Widget>({alias: 'widget'});
+  data = input.required<Widget>();
   showOptions = signal(false);
 
   constructor() {
-    effect(() => {
-      console.log(this.w());
-    });
   }
 }

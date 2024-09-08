@@ -36,7 +36,7 @@ import {wrapGrid} from 'animate-css-grid';
       </div>
       <div class="widget-lists" #dashboard>
         @for (w of dashboardStore.addedWidgets(); track w.id) {
-          <app-widget [widget]="w"></app-widget>
+          <app-widget [data]="w"></app-widget>
         }
       </div>
     </div>
