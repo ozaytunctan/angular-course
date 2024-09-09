@@ -23,6 +23,12 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/dashboard/dashboard.component')
           .then(m => m.DashboardComponent),
       },
+      {
+        path: 'child',
+        loadComponent: () => import('./pages/child-decorator-example/child-decorator-example.component')
+          .then(m => m.ChildDecoratorExampleComponent),
+
+      },
 
       // Lazy Loading com
       {
