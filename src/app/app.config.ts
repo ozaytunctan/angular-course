@@ -1,5 +1,11 @@
 import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
-import {provideRouter, withPreloading, withRouterConfig, withViewTransitions} from '@angular/router';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withPreloading,
+  withRouterConfig,
+  withViewTransitions
+} from '@angular/router';
 
 import {routes} from './app.routes';
 import {provideHttpClient, withFetch} from "@angular/common/http";
@@ -16,6 +22,7 @@ export const appConfig: ApplicationConfig = {
       withPreloading(CustomPreloadingStrategy),
       withViewTransitions(),
       withRouterConfig({paramsInheritanceStrategy: 'always'}),
+      withComponentInputBinding()
     ),
     provideHttpClient(withFetch()),
     provideAnimationsAsync(),

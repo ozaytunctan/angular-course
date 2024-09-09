@@ -60,7 +60,7 @@ import {WidgetOptionsComponent} from "./widget-options/widget-options.component"
 
   `,
   host: {
-    '[style.grid-area]': '"span "+ (data().rows?? 1)+ " /span "+ (data().cols ?? 1)'
+    '[style.grid-area]': '"span "+ (data().rows?? 1)+ "/ span "+ (data().cols ?? 1)'
   }
 })
 

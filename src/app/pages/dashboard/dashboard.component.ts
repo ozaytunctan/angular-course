@@ -16,37 +16,35 @@ import {wrapGrid} from 'animate-css-grid';
     MatMenuModule
   ],
   template: `
-    <div>
-      <div class="header">
-        <h2>Widgets Dashboard</h2>
-        <button mat-raised-button [matMenuTriggerFor]="widgetMenu">
-          <mat-icon>add_circle</mat-icon>
-          Add Widgets
-        </button>
+    <div class="header">
+      <h2>Widgets Dashboard</h2>
+      <button mat-raised-button [matMenuTriggerFor]="widgetMenu">
+        <mat-icon>add_circle</mat-icon>
+        Add Widgets
+      </button>
 
-        <mat-menu #widgetMenu="matMenu">
-          @for (w of dashboardStore.widgetsToAdd(); track w.id) {
-            <button mat-menu-item
-                    (click)="dashboardStore.addWidget(w)">{{ w.title }}
-            </button>
-          } @empty {
-            <button mat-menu-item>No widgets to add</button>
-          }
-        </mat-menu>
-      </div>
-      <div class="widget-lists" #dashboard>
-        @for (w of dashboardStore.addedWidgets(); track w.id) {
-          <app-widget [data]="w"></app-widget>
+      <mat-menu #widgetMenu="matMenu">
+        @for (w of dashboardStore.widgetsToAdd(); track w.id) {
+          <button mat-menu-item
+                  (click)="dashboardStore.addWidget(w)">{{ w.title }}
+          </button>
+        } @empty {
+          <button mat-menu-item>No widgets to add</button>
         }
-      </div>
+      </mat-menu>
+    </div>
+    <div class="dashboard-widgets" #dashboard>
+      @for (w of dashboardStore.addedWidgets(); track w.id) {
+        <app-widget [data]="w"></app-widget>
+      }
     </div>
   `,
   styles: `
-    .widget-lists {
+    .dashboard-widgets {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       grid-auto-rows: 150px;
-      gap: 1rem;
+      gap: 16px;
     }
 
     .header {
