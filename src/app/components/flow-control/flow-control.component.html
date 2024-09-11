@@ -3,7 +3,8 @@
     <h3>if</h3>
     <button mat-raised-button
             color="primary"
-            *ngIf="isAdmin">Delete database</button>
+            *ngIf="isAdmin">Delete database
+    </button>
     @if (isAdmin) {
       <button mat-button>Delete database</button>
     }
@@ -104,3 +105,25 @@
 <ng-template #noPermission>
   <p>You don't have permission.</p>
 </ng-template>
+
+
+<div
+  *ngTemplateOutlet="controlFlow;context:{response:{message:'Template content outlet message'}}">
+  deneme mesaj
+</div>
+
+<ng-template #controlFlow let-data="response">
+  <h3>Template Outlet 1</h3>
+  <p>{{ data.message }}</p>
+</ng-template>
+
+<ng-template #controlFlow2 let-data="response">
+  <h3>Template Outlet 2</h3>
+  <p>{{ data.message }}</p>
+</ng-template>
+
+
+<div [ngTemplateOutlet]="controlFlow2"
+     [ngTemplateOutletContext]="{response:{message:'Template content2 message data'}}">
+  control flow 2
+</div>
