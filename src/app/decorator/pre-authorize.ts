@@ -16,9 +16,7 @@ export function PreAuthorize(config: {
 
     const originalMethod = descriptor.value;
     descriptor.value = async function (...args: any[]) {
-
       const isAuthorizedResult = await isAuthorized(config);
-
       if (isAuthorizedResult) {
         return originalMethod.apply(this, args);
       } else {
@@ -42,8 +40,8 @@ async function isAuthorized(config: {
 }) {
   //promise dönseydik
   //const roleCheck = config.roles?.length ?  await hasRole(config.roles) : false;
-  const roleCheck = config.roles?.length ?  hasRole(config.roles) : false;
-  const authorityCheck = config.authorities?.length ?  hasAuthority(config.authorities) : false;
+  const roleCheck = config.roles?.length ? hasRole(config.roles) : false;
+  const authorityCheck = config.authorities?.length ? hasAuthority(config.authorities) : false;
 
   return roleCheck || authorityCheck;
 }

@@ -3,6 +3,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {Confirmable} from "../../decorator/confirmable";
 import {PreAuthorize} from "../../decorator/pre-authorize";
 import {Loggable} from "../../decorator/loggable";
+import {RoleConstants} from "../../constants/role-constants";
+import {Retryable} from "../../decorator/retryable";
 
 @Component({
   selector: 'app-decorator-example',
@@ -16,22 +18,19 @@ import {Loggable} from "../../decorator/loggable";
 export class DecoratorExampleComponent {
 
   confirmed: boolean = false;
-
   constructor() {
   }
 
-
-  @PreAuthorize({roles:["ADMIN_ROLE", "CREATE_ROLE"]})
-  @Confirmable({text: 'Fişi kesin kayda almak istediğinize eminmisiniz..?', title: 'Fiş Onay Ekran'})
+  @PreAuthorize({roles:[RoleConstants.ADMIN_ROLE, RoleConstants.CREATE_ROLE]})
+  @Confirmable({text: 'Fişi kesin kayda almak istediğinize eminmisiniz..?', title: 'Fiş Onay Ekranı'})
   @Loggable()
   onApprove() {
     this.confirmed = true;
     alert("Fiş kesin kayda başarıyla alındı. :" + this.confirmed);
   }
 
-
   @PreAuthorize({roles: ["ADMIN_ROLE1", "CREATE_ROLE1"]})
-  @Confirmable({text: 'Silmek istediğinize eminmisiniz.?', title: 'Silme Onay Ekran'})
+  @Confirmable({text: 'Fişi silmek istediğinize eminmisiniz.?', title: 'Silme Onay Ekranı'})
   @Loggable()
   onDelete() {
     this.confirmed = true;
