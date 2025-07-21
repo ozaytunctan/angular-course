@@ -1,7 +1,3 @@
-import {AppComponent} from "../app.component";
-import {AuthService} from "../services/auth.service";
-import {Type} from "@angular/core";
-
 export function Loggable() {
   return (
     target: Object,

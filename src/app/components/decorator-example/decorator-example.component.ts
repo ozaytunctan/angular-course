@@ -16,16 +16,26 @@ import {Loggable} from "../../decorator/loggable";
 export class DecoratorExampleComponent {
 
   confirmed: boolean = false;
+
   constructor() {
   }
 
-  // @PreAuthorize()
-  @PreAuthorize("ADMIN_ROLE", "CREATE_ROLE")
-  @Confirmable()
+
+  @PreAuthorize({roles:["ADMIN_ROLE", "CREATE_ROLE"]})
+  @Confirmable({text: 'Fişi kesin kayda almak istediğinize eminmisiniz..?', title: 'Fiş Onay Ekran'})
   @Loggable()
-  onSave() {
+  onApprove() {
     this.confirmed = true;
-    alert("Confirmed :" + this.confirmed);
+    alert("Fiş kesin kayda başarıyla alındı. :" + this.confirmed);
+  }
+
+
+  @PreAuthorize({roles: ["ADMIN_ROLE1", "CREATE_ROLE1"]})
+  @Confirmable({text: 'Silmek istediğinize eminmisiniz.?', title: 'Silme Onay Ekran'})
+  @Loggable()
+  onDelete() {
+    this.confirmed = true;
+    alert("Fiş silme işlemi yapılıyor...  :" + this.confirmed);
   }
 
 }

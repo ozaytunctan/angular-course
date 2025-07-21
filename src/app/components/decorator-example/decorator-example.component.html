@@ -1,8 +1,15 @@
 <h2>Custom Decorator example</h2>
-<button (click)="onSave()"
+<button (click)="onApprove()"
         color="primary"
         class="outlined button"
         mat-raised-button>
-  Do Something
+ Onaylama
+</button>
+
+<button (click)="onDelete()"
+        color="primary"
+        class="outlined button"
+        mat-raised-button>
+ Silme
 </button>
 <div>{{ this.confirmed }}</div>

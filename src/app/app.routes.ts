@@ -17,6 +17,11 @@ export const routes: Routes = [
         canActivate: [noAuthGuard],
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
       },
+      {
+        path: 'decorator',
+        canActivate: [noAuthGuard],
+        loadComponent: () => import('./components/decorator-example/decorator-example.component').then(m => m.DecoratorExampleComponent),
+      },
 
       {
         path: 'dashboard',

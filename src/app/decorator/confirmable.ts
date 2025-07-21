@@ -9,17 +9,19 @@ export interface ConfirmableDecoratorOptions {
   text?: string;
 }
 
-export function Confirmable() {
+export function Confirmable(option?: ConfirmableDecoratorOptions) {
   return (
     target: Object,
     propertyKey: string,
     descriptor: PropertyDescriptor
   ) => {
     const originalMethod = descriptor.value;
-    const config: ConfirmableDecoratorOptions = {
-      title: 'Onay',
-      text: 'Bu işlemi onaylıyor musunuz.?',
-    };
+    if (!option){
+      option = {
+        title: 'Onay',
+        text: 'Bu işlemi onaylıyor musunuz.?',
+      };
+    }
 
     descriptor.value = async function (...args: any[]) {
       const dialog: MatDialog = AppComponent.INJECTOR.get<MatDialog>(
@@ -30,8 +32,8 @@ export function Confirmable() {
         ComfirmDialogComponent,
         {
           data: {
-            title: config.title,
-            text: config.text,
+            title: option?.title,
+            text: option?.text,
           },
         }
       );

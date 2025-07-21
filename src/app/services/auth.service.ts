@@ -24,13 +24,14 @@ export class AuthService {
   }
 }
 
-export function hasRole(roles: string[] | any[]) {
-  if (roles == null || roles.length == 0) {
+export function hasRole(roles: string[] | string) {
+  if (roles == null) {
     return false;
   }
 
+  const newRoles= Array.isArray(roles) ? roles : [roles];
   const defaultUserRoles = ['ADMIN_ROLE', 'CREATE_ROLE', 'USER_ROLE', 'READ_ROLE'];
-  return defaultUserRoles.some(role => roles.includes(role));
+  return defaultUserRoles.some(role => newRoles.includes(role));
 
   // role kontolü yap sonra yetkilendir.
   // const http = inject(HttpClient);
